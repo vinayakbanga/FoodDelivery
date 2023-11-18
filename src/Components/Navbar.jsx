@@ -20,7 +20,7 @@ export default function Navbar() {
     <Disclosure as="nav" className="bg-white  mt-2  ">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
+          <div className=" mx-auto max-w-7xl px-2 sm:px-6 lg:px-2  ">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -68,7 +68,10 @@ export default function Navbar() {
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View items</span>
+                  <div className='flex items-center'>
                   <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                  <span class="  rounded-full  text-xs font-medium text-white  mb-5">1</span>
+                  </div>
                 </button>
 
                 {/* Profile dropdown */}
