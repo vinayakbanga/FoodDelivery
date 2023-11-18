@@ -1,0 +1,1 @@
+import imagef from "../../public/img1/logo.png"
