@@ -1,5 +1,5 @@
 import React from 'react'
-import Itemcard from './Itemcard'
+import Itemcard from '../../Components/Itemcard'
 
 
 
