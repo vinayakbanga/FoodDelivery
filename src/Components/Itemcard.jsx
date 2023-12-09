@@ -1,17 +1,12 @@
-const menuitem={
-    "_id":{"$oid":"5eee651f739f8c674fd736ee"},
-    "name":"Aloo Tikki Burger",
-    "image":"burger-3.png",
-    "price":"60","type":"veg",
-    "category":"burger"
-    }
+
     
-    const Itemcard = () => {
+    const Itemcard = ({menuitem}) => {
       return (
         <>
         <div className=' hidden md:flex border-2 border-slate-200 shadow-gray-200 shadow mb-3  rounded-lg max-w-sm w-1/4   flex-col items-center justify-center' >
                 <img 
-                src="https://github.com/vinayakbanga/FoodDelivery/blob/main/src/img1/Burger1.png?raw=true"/>
+                src="https://github.com/vinayakbanga/FoodDelivery/blob/main/src/img1/Burger1.png?raw=true"
+                alt="Product"/>
                 <h2>{menuitem.name}</h2>
                 <span class="size py-1 px-4 bg-gray-200 rounded-full uppercase text-xs ">{menuitem.type}</span>
                 <div className="flex items-center px-5 gap-5 justify-around w-full py-2">
@@ -28,7 +23,8 @@ const menuitem={
                 <div>
                 <img 
                 className="w-20"
-                src="https://github.com/vinayakbanga/FoodDelivery/blob/main/src/img1/Burger1.png?raw=true"/>
+                src="https://github.com/vinayakbanga/FoodDelivery/blob/main/src/img1/Burger1.png?raw=true"
+                alt="Product Phone"/>
 
                 </div>
                 <div className="flex flex-col gap-1 items-center">

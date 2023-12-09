@@ -11,7 +11,7 @@ const Header = () => {
             <button class="px-6 py-2 rounded-full text-white font-normal mt-4 bg-orange-500 md:font-semibold ">Order Now</button>
         </div>
         <div class="w-1/2 flex items-center justify-center">
-            <img src={headerimage}/>            
+            <img src={headerimage} alt='Header'/>            
         </div>
         </div>
 
