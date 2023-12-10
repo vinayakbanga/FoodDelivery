@@ -8,7 +8,7 @@
                 <img 
                 src={`https://github.com/vinayakbanga/FoodDelivery/blob/main/src/img/${menuitem.image}?raw=true`}
                 alt="Product"
-                className="border-2 w-1/2"/>
+                className="  h-40"/>
                 <h2>{menuitem.name}</h2>
                 <span class="size py-1 px-4 bg-gray-200 rounded-full uppercase text-xs ">{menuitem.type}</span>
                 <div className="flex items-center px-5 gap-5 justify-around w-full py-2">

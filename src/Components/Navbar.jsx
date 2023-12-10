@@ -8,7 +8,7 @@ import imagef from "../img1/logo.png"
 const navigation = [
   { name: 'Menu', href: '/', current: true },
   { name: 'Orders', href: '#', current: false },
-  { name: 'Register', href: '#', current: false },
+  { name: 'Register', href: '/register', current: false },
   { name: 'Login', href: '/login', current: false },
 ]
 

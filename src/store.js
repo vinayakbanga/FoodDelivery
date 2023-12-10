@@ -1,15 +1,14 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { menuReducer } from "./Reducers/menuReducer";
-// import thunk from "redux-thunk"
-// Define a dummy reducer
-// const dummyReducer = (state = {}, action) => {
-//   // You can add your reducer logic here
-//   return state;
-// };
+import {userReducer} from "./Reducers/userReducer"
+import dummyReducer from "./Reducers/dummyReducer";
+
 
 // Combine the reducers
 const reducer = combineReducers({
   items: menuReducer,
+  user:userReducer,
+  dummy:dummyReducer
   // Add more reducers if needed
 });
 
