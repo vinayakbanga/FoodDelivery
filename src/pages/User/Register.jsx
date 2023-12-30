@@ -35,7 +35,7 @@ const registerDataChange=(e)=>{
 }
  const registerSub=(e)=>{
     e.preventDefault();
-    console.log(user);
+    // console.log(user);
 
     const myForm= new FormData();
 
@@ -45,7 +45,7 @@ const registerDataChange=(e)=>{
     // myForm.set("avatar",avatar);
     dispatch(register(user))
 
-    console.log(myForm);
+    // console.log(myForm);
     
 
  }
@@ -61,7 +61,7 @@ const registerDataChange=(e)=>{
       
     }
     if(isAuthenticated){
-        navigate('/');
+        navigate('/login');
       }
     dispatch(clearErrors());
   }, [dispatch, error,navigate,isAuthenticated]);

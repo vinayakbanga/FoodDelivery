@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import Loader from '../../Components/Loader'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import {addItemsToCart} from "../../Actions/cartActions"
 
 
 const Home = () => {

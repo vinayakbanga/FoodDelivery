@@ -4,11 +4,12 @@ import { useDispatch,useSelector } from 'react-redux';
 import { login,clearErrors } from '../../Actions/userAction';
 import { toast } from 'react-toastify';
 import Loader from '../../Components/Loader';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 
-const Login = ({history}) => {
+const Login = () => {
     const {loading,error,isAuthenticated}=useSelector(state=>state.user)
     const navigate = useNavigate();
+    const location=useLocation();
 
     const dispatch=useDispatch();
 // 7:30
@@ -22,6 +23,8 @@ const Login = ({history}) => {
     const[loginEmail,setLoginEmail]=useState("");
     const[loginPassword,setLoginPassword]=useState("")
 
+    const redirect=location.search?location.search.split("=")[1]:"/account"
+
     useEffect(() => {
         if (error) {
           if (error instanceof Error) {
@@ -32,10 +35,10 @@ const Login = ({history}) => {
           
         }
         if(isAuthenticated){
-            navigate('/account');
+            navigate(redirect);
           }
         dispatch(clearErrors());
-      }, [dispatch, error,navigate,isAuthenticated]);
+      }, [dispatch, error,navigate,isAuthenticated,redirect]);
 
 
  

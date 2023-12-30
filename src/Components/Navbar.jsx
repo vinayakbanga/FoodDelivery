@@ -2,21 +2,46 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon,ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import { useDispatch,useSelector} from 'react-redux'
 // import image from "./"
 import imagef from "../img1/logo.png"
+import { logout } from '../Actions/userAction'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//10:30
 
-const navigation = [
-  { name: 'Menu', href: '/', current: true },
-  { name: 'Orders', href: '#', current: false },
-  { name: 'Register', href: '/register', current: false },
-  { name: 'Login', href: '/login', current: false },
-]
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Navbar() {
+export default function Navbar({user}) {
+  const dispatch = useDispatch();
+
+  const {cartItems}=useSelector((state)=>state.cart)
+  // console.log(cartItems.length);
+
+  const userRole = user && user.user ? user.user.role : null;
+  const handleLogout=()=>{
+    dispatch(logout());
+    toast.success("Logout Sucessfull")
+  }
+
+  const navigation = [
+    { name: 'Menu', href: '/', current: true },
+    userRole === 'admin'
+    ?{ name: 'All Orders', href: '#', current: false }
+    :{ name: 'Orders', href: '#', current: false },
+    user.isAuthenticated
+    ? { name: `Hi, ${user.user.name}`, href: '#', current: false }
+    : { name: 'Login', href: '/login', current: false },
+  user.isAuthenticated
+    ? { name: 'Logout', href: '/',onClick: handleLogout, current: false }
+    : { name: 'Register', href: '/register', current: false },
+  ]
+
+  
   return (
     <Disclosure as="nav" className="bg-white  mt-2  ">
       {({ open }) => (
@@ -50,6 +75,7 @@ export default function Navbar() {
                       <Link
                         key={item.name}
                         to={item.href}
+                        onClick={item.onClick}
                         className={classNames(
                           item.current ? 'text-orange-500' : 'text-gray-900 hover:text-orange-500  ',
                           'rounded-md px-3 py-2 text-base font-medium md:text-lg'
@@ -63,19 +89,23 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <Link to="/cart">
                 <button
                   type="button"
-                  className="relative rounded-full bg-orange-500 p-1 text-white hover:text-orange-500 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-orange-800"
+                  className="relative rounded-full bg-orange-500 p-1 text-white hover:text-orange-500 hover:border-orange-500 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-orange-800"
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View items</span>
+                  
                   <div className='flex items-center'>
                   <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                  <span class="  rounded-full  text-xs font-medium text-white  mb-5">1</span>
+                  <span class="  rounded-full  text-xs font-medium text-white  mb-5">{cartItems.length}</span>
+                 
                   </div>
                 </button>
+                  </Link>
 
-                {/* Profile dropdown */}
+                {/* Profile dropdown
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -107,7 +137,7 @@ export default function Navbar() {
                             Your Profile
                           </a>
                         )}
-                      </Menu.Item>
+                      </Menu.Item> */}
                       {/* <Menu.Item>
                         {({ active }) => (
                           <a
@@ -118,7 +148,7 @@ export default function Navbar() {
                           </a>
                         )}
                       </Menu.Item> */}
-                      <Menu.Item>
+                      {/* <Menu.Item>
                         {({ active }) => (
                           <a
                             href="#"
@@ -130,7 +160,7 @@ export default function Navbar() {
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                </Menu> */}
               </div>
             </div>
           </div>
