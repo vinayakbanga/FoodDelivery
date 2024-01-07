@@ -118,7 +118,7 @@ const Payment = ({ history }) => {
           dispatch(createOrder(order));
         toast.success("Order placed")
 
-          navigate("/order/me");
+          navigate("/orders/me");
         } else {
           toast.error("There's some issue while processing payment ");
         }

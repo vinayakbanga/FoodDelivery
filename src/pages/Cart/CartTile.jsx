@@ -30,7 +30,7 @@ const CartTile = ({item}) => {
   return (
     <div className="flex  items-center  my-8  justify-between" >
                 <div >
-                <img className="w-14 md:w-24" src={`https://github.com/vinayakbanga/FoodDelivery/blob/main/src/img/${item.image}?raw=true`} alt="item"/>
+                <img className="h-24 w-24" src={`https://github.com/vinayakbanga/FoodDelivery/blob/main/src/img/${item.image}?raw=true`} alt="item"/>
                 </div>
                 <div className="flex flex-col ml-4 justify-center items-center  text-center">
                     <h1 className="text-sm md:text-base ">{item.name}</h1>

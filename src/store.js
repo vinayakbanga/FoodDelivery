@@ -3,7 +3,8 @@ import { menuReducer } from "./Reducers/menuReducer";
 import {profileReducer, userReducer} from "./Reducers/userReducer"
 import dummyReducer from "./Reducers/dummyReducer";
 import { cartReducer } from "./Reducers/cartReducer";
-import { newOrderReducer } from "./Reducers/orderReducer";
+import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from "./Reducers/orderReducer";
+// import { myOrders } from "./Actions/orderAction";
 
 
 // Combine the reducers
@@ -13,7 +14,11 @@ const reducer = combineReducers({
   profile:profileReducer,
   dummy:dummyReducer,
   cart:cartReducer,
-  newOrder:newOrderReducer
+  newOrder:newOrderReducer,
+  myOrders:myOrdersReducer,
+  orderDetails: orderDetailsReducer,
+  allOrders:allOrdersReducer,
+  order:orderReducer
   // Add more reducers if needed
 });
 

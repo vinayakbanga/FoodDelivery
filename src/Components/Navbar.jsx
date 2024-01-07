@@ -28,18 +28,22 @@ export default function Navbar({user}) {
     toast.success("Logout Sucessfull")
   }
 
-  const navigation = [
-    { name: 'Menu', href: '/', current: true },
-    userRole === 'admin'
-    ?{ name: 'All Orders', href: '#', current: false }
-    :{ name: 'Orders', href: '#', current: false },
-    user.isAuthenticated
-    ? { name: `Hi, ${user.user.name}`, href: '#', current: false }
-    : { name: 'Login', href: '/login', current: false },
-  user.isAuthenticated
-    ? { name: 'Logout', href: '/',onClick: handleLogout, current: false }
-    : { name: 'Register', href: '/register', current: false },
-  ]
+  let navigation = [
+    { name: 'Menu', href: '/', current: true }
+  ];
+
+  if (user.isAuthenticated) {
+    if (userRole === 'admin') {
+      navigation.push({ name: 'All Orders', href: '/admin/orders', current: false });
+    } else {
+      navigation.push({ name: 'Orders', href: '/orders/me', current: false });
+    }
+    navigation.push({ name: `Hi, ${user.user.name}`, href: '#', current: false });
+    navigation.push({ name: 'Logout', href: '/', onClick: handleLogout, current: false });
+  } else {
+    navigation.push({ name: 'Login', href: '/login', current: false });
+    navigation.push({ name: 'Register', href: '/register', current: false });
+  }
 
   
   return (
