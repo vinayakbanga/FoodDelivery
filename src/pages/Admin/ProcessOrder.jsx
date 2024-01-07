@@ -193,13 +193,15 @@ const ProcessOrder = () => {
                     className="py-4 px-16 w-full border border-gray-400 rounded outline-none"
                     onChange={(e) => setStatus(e.target.value)}
                   >
+
+                       <option value="currentstatus">Select the status</option>
                     
                    
                       <option value="Order Placed">Order Placed</option>
                       <option value="Order Confirmation">Order Confirmation</option>
                       <option value="Preparation">Preparation</option>
                       <option value="Out for delivery">Out for delivery</option>
-                      <option value="Complete">Complete</option>
+                      <option value="Delivered">Delivered</option>
                     
                   </select>
                 </div>

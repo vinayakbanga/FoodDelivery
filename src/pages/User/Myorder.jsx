@@ -98,7 +98,12 @@ const Myorder = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="myOrdersPage">
+
+        
+
+
+          <div className="myOrdersPage h-screen">
+             <h2 className=" text-center font-bold text-xl my-10">{user.name}'s Orders</h2>
             <DataGrid
               rows={rows}
               columns={columns}
@@ -108,7 +113,7 @@ const Myorder = () => {
               autoHeight
             />
   
-            <h2 id="myOrdersHeading">{user.name}'s Orders</h2>
+           
           </div>
         )}
       </Fragment>

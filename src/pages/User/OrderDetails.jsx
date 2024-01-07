@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 const OrderDetails = () => {
   const { id } = useParams();
   const { order, error, loading } = useSelector((state) => state.orderDetails);
+  const{deliveredAt}= useSelector((state) => state.myOrders);
   const dispatch = useDispatch();
   
   
@@ -71,7 +72,7 @@ const OrderDetails = () => {
       ) : (
         <Fragment>
           <Metadata title="Order Details" />
-          <div className="bg-white py-10"> {/* orderDetailsPage */}
+          <div className="bg-white py-10 h-screen"> {/* orderDetailsPage */}
             <div className="p-10"> {/* orderDetailsContainer */}
               <Typography component="h1" className="text-3xl font-light text-tomato my-4">
                 Order #{order && order._id}
@@ -119,6 +120,7 @@ const OrderDetails = () => {
                   <p className={`text-sm ${order.orderStatus && order.orderStatus === "Delivered" ? "text-green-500" : "text-red-500"}`}>
                     {order.orderStatus && order.orderStatus}
                   </p>
+                 
                 </div>
               </div>
             </div>

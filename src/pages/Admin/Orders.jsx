@@ -106,15 +106,20 @@ const OrderList = () => {
 
   const rows = [];
 
+  
   orders &&
     orders.forEach((item) => {
-      rows.push({
-        id: item._id,
-        itemsQty: item.orderItems.length,
-        amount: item.totalPrice,
-        status: item.orderStatus,
-      });
+      // Only add to rows if the order status is not 'Delivered'
+      if (item.orderStatus !== "Delivered") {
+        rows.push({
+          id: item._id,
+          itemsQty: item.orderItems.length,
+          amount: item.totalPrice,
+          status: item.orderStatus,
+        });
+      }
     });
+
 
   return (
     <Fragment>

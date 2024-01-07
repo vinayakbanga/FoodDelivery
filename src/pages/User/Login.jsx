@@ -7,7 +7,7 @@ import Loader from '../../Components/Loader';
 import { useNavigate,useLocation } from 'react-router-dom';
 
 const Login = () => {
-    const {loading,error,isAuthenticated}=useSelector(state=>state.user)
+    const {loading,error,isAuthenticated,user}=useSelector(state=>state.user)
     const navigate = useNavigate();
     const location=useLocation();
 
@@ -23,7 +23,9 @@ const Login = () => {
     const[loginEmail,setLoginEmail]=useState("");
     const[loginPassword,setLoginPassword]=useState("")
 
-    const redirect=location.search?location.search.split("=")[1]:"/account"
+    // const redirect=location.search?location.search.split("=")[1]:"/account"
+
+    // const redirect= isAdmin ==
 
     useEffect(() => {
         if (error) {
@@ -34,11 +36,15 @@ const Login = () => {
           }
           
         }
-        if(isAuthenticated){
-            navigate(redirect);
-          }
+        if (isAuthenticated) {
+            if (user && user.role === 'admin') {
+                navigate('/admin/orders');
+            } else {
+                navigate('/orders/me');
+            }
+        }
         dispatch(clearErrors());
-      }, [dispatch, error,navigate,isAuthenticated,redirect]);
+      }, [dispatch, error,navigate,isAuthenticated]);
 
 
  

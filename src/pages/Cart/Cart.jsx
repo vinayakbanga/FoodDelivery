@@ -30,7 +30,7 @@ const Cart = () => {
 // Recalculate when cartItems change
 
 const checkOutHandler=()=>{
-  navigate("/login?redirect=shipping")
+  navigate("/login/shipping")
 }
 
 
